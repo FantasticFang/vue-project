@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test": "npm run unit && npm run e2e",
     "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "e2e": "vue-cli-service test:e2e",
+    "unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "core-js": "^3.6.5",
