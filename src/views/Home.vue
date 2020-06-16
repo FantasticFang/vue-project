@@ -1,15 +1,16 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <sort-list />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import SortList from '@components/sortList'
 
 export default {
   name: 'Home',
   components: {
+    SortList
   }
 }
 </script>
