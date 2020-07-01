@@ -1,16 +1,30 @@
 <template>
   <div class="home">
-    <sort-list />
+    <project-menu :items="menuItems" />
   </div>
 </template>
 
 <script>
-import SortList from '@components/sortList'
+import ProjectMenu from '@components/menu'
+// import SortList from '@components/sortList'
 
 export default {
   name: 'Home',
   components: {
-    SortList
+    ProjectMenu
+    // SortList
+  },
+  data () {
+    return {
+      menuItems: [
+        {
+          text: '拖拽排序',
+          to: {
+            name: 'darg'
+          }
+        }
+      ]
+    }
   }
 }
 </script>

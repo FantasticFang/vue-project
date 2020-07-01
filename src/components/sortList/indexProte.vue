@@ -30,11 +30,10 @@ export default {
     onDragStart (e) {
       const target = e.target
       if (target.nodeName === 'I') {
-        this.start.x = e.clientX
-        this.start.y = e.clientY
+        this.start.x = e.pageX
+        this.start.y = e.pageY
         const targetNode = target.parentNode
-        this.offset.left = targetNode.offsetLeft
-        this.offset.top = targetNode.offsetTop
+        this.offset = this.getOffsetByBody(targetNode)
         this.dragTarget = targetNode.cloneNode(true)
         document.body.appendChild(this.dragTarget)
         this.dragTarget.style.left = this.offset.left + 'px'
@@ -54,14 +53,23 @@ export default {
       }
     },
     dragMove (e) {
-      this.dragTarget.style.left = this.offset.left + e.clientX - this.start.x + 'px'
-      this.dragTarget.style.top = this.offset.top + e.clientY - this.start.y + 'px'
+      this.dragTarget.style.left = this.offset.left + e.pageX - this.start.x + 'px'
+      this.dragTarget.style.top = this.offset.top + e.pageY - this.start.y + 'px'
     },
     init () {
       this.isDragging = false
       this.start.x = 0
       this.start.y = 0
       document.body.removeChild(this.dragTarget)
+    },
+    getOffsetByBody (el) {
+      const offset = { left: 0, top: 0 }
+      while (el && el.nodeName !== 'BODY') {
+        offset.left += el.offsetLeft
+        offset.top += el.offsetTop
+        el = el.offsetParent
+      }
+      return offset
     }
   }
 }

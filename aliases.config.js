@@ -14,6 +14,7 @@ const aliases = {
   '@modules': 'src/modules',
   '@apps': 'src/apps',
   '@data': 'src/data',
+  '@plugins': 'src/plugins',
   '@styles': 'src/styles',
   '@services': 'src/services',
   '@pages': 'src/pages',

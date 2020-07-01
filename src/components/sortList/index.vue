@@ -4,6 +4,7 @@
       ref="drag-list"
       name="drag-list"
       tag="ul"
+      type="transition"
       @dragstart.native="onDragStart"
       @dragover.native="onDragMove"
     >
@@ -34,9 +35,7 @@ export default {
       if (target.nodeName === 'LI' && target !== this.dragElement) {
         const startIndex = this.findIndex(this.dragElement)
         const currentIndex = this.findIndex(target)
-        const tmp = this.items[startIndex]
-        this.items.splice(startIndex, 1)
-        this.items.splice(currentIndex, 0, tmp)
+        this.items.splice(currentIndex, 0, this.items.splice(startIndex, 1)[0])
       }
     },
     findIndex (el) {
